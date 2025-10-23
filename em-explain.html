@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+
+    <html lang="ko">
+      <head>
+        <meta charset="UTF-8" />
+
+        <title>em 단위 예시</title>
+
+        <style>
+          .container-em {
+            font-size: 20px; /* 이 div 안에서는 1em = 20px */
+
+            border: 1px solid blue;
+
+            padding: 1em; /* 20px * 1 = 20px */
+
+            margin-bottom: 2em; /* 20px * 2 = 40px */
+          }
+
+          .container-em p {
+            font-size: 1em; /* 부모인 .container-em의 font-size(20px)를 따름 */
+
+            background-color: lightblue;
+
+            padding: 0.5em; /* 20px * 0.5 = 10px */
+          }
+
+          .container-em .nested-em {
+            font-size: 0.8em; /* 부모인 .container-em의 0.8배, 즉 20px * 0.8 = 16px. 이 안에서는 1em = 16px */
+
+            border: 1px solid green;
+
+            padding: 1em; /* 16px * 1 = 16px */
+
+            margin-top: 1em; /* 16px * 1 = 16px */
+          }
+
+          .container-em .nested-em p {
+            font-size: 1em; /* 자신의 부모인 .nested-em의 font-size(16px)를 따름 */
+
+            background-color: lightgreen;
+
+            padding: 0.5em; /* 16px * 0.5 = 8px */
+          }
+        </style>
+      </head>
+
+      <body>
+        <h3>em 단위 예시</h3>
+
+        <div class="container-em">
+          <p>저는 부모 div의 font-size(20px)를 따라 20px로 보여요.</p>
+
+          <div class="nested-em">
+            <p>
+              저는 제 부모 div의 font-size(16px)를 따라 16px로 보여요. 제 패딩은
+              부모 기준 16px, 제 안의 텍스트는 16px입니다.
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>

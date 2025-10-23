@@ -1,0 +1,21 @@
+div {
+  height: 1000px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+.row {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin-right: 40px;
+}
+
+li a {
+  text-decoration: none;
+  color: @000;
+}
+
+ul {
+}
