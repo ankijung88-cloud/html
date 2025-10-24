@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+/* import 단어가 들어가는 것은 css 최상단에 위치한다 */
+html {
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+/* 위의 내용은 공통사항으로 기본적용대상임 */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* inherit는 상위 글씨체의 상속을 받는다 */
+
+ul {
+  list-style: none;
+}
+
+.main-header {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* rgba를 입력후 숫자를 입력하여 컬러선정 */
+  color: white;
+  padding: 1rem 2rem;
+  /* padding에서 여백값을 입력할때 단위사이에 공백(rem=위아래 rem=좌우)을 입력한다 
+   웹브라우저의 기본픽셀은 16px이다*/
+  display: flex;
+  /* display:flex는 기본방향과 위치의 고정을 해제하여 자유도를 주는것이다. 
+   main-header에 적용하여 고정해제 */
+  justify-content: space-between; /* space-between 균등분할 */
+  align-items: center; /* align은 세로방향을 의미 items의 s는 div 와 nav 두 그룹을 의미한다 */
+  position: fixed; /* position fixed 고정이되어 움직이지 않음 */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* 컨텐츠의 배치를 숫자가 클수록 위에 배치한다 */
+}
+
+.main-header .logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.main-nav ul {
+  display: flex;
+}
+
+.main-nav ul li {
+  margin-left: 2rem;
+}
+
+.main-nav ul li a {
+  color: white;
+  font-weight: 400;
+  font-size: 1.1rem;
+  padding-bottom: 0.3rem;
+  transition: color 0.3s ease;
+  /* transition:부드럽게 변함 그라데이션처럼 서서히 변함 0.3s는 시간(초) */
+}
+
+.main-nav ul li a:hover {
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+.hero-section {
+  height: 100vh;
+  /* 화면 높이 전체를 차지하도록 설정한다 */
+  background: url("https://picsum.photos/3840/2160") no-repeat center
+    center/cover;
+  /* picsum.photos 공개된 이미지를 제공해주는 사이트 이용시 이미지의 크기를 지정해야함
+  3840/2160 은 4k 해상도임
+  no-repeat : 한장의 이미지만 가져옴 center center:중앙정렬 cover: 다 덮는것*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-content h2 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
