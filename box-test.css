@@ -1,0 +1,52 @@
+/* .flex-container {
+  /* width: 300px;
+  height: 200px; */
+/* background-color: #c4c4c4;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+/* .flex-item {
+  color: white;
+  background-color: #ff5252;
+} */
+
+/* .flex-item:nth-child(2n) {
+  background-color: #bf5252; */
+/* } */
+/* .flex-item:nth-child css의 선택자는 두 부분으로 나뉨 */
+/* :nth-child(2n)의 의미는 짝수를 의미한다 부모 요소의 자식들중에서 몇 번째 자식인가*/
+
+/* .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  grid-template-rows: repeat(2, 500px);
+  row-gap: 10px;
+  column-gap: 20px;
+  /* gap속성은 마이크로소프트 엣지에서 적용이 안될 수도 있음 */
+/* align-items: center; }*/
+
+/* .grid-item {
+  color: black; }*/
+
+/* .grid-item {
+  background-color: #bf5252; }*/
+
+/* div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+} */
+
+/* @media only screen and (min-width: 420px) {
+  div {
+    background-color: blue;
+  } */
+}
+/* 420이상 미디어의 폭 */
+/* 반응형 웹을 만들때는 반드시 위 내용이 들어가야함 */
+
+/* @media (min-width: 360px;) and (max-width:720px) */
+/* only screen 은 생략되었다. 그러나 문구가 있다고 생각을 해야함
+
