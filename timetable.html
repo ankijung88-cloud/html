@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="timetable.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>구구단</h1>
+    <div class="container">
+      <script>
+        for (let i = 2; i <= 4; i++) {
+          console.log(`<div class="times">`);
+          console.log(`<h3>${i}단</h3>`);
+          for (let j = 1; j <= 9; j++) {
+            console.log(`${i} * ${j} = ${i * j} <br>`);
+          }
+          console.log(`</div>`);
+        }
+      </script>
+    </div>
+    <div class="container">
+      <script>
+        for (let i = 5; i <= 7; i++) {
+          document.write(`<div class="times">`);
+          document.write(`<h3>${i}단</h3>`);
+          for (let j = 1; j <= 9; j++) {
+            document.write(`${i} * ${j} = ${i * j} <br>`);
+          }
+          document.write(`</div>`);
+        }
+      </script>
+    </div>
+    <div class="container">
+      <script>
+        for (let i = 8; i <= 9; i++) {
+          document.write(`<div class="times">`);
+          document.write(`<h3>${i}단</h3>`);
+          for (let j = 1; j <= 9; j++) {
+            document.write(`${i} * ${j} = ${i * j} <br>`);
+          }
+          document.write(`</div>`);
+        }
+      </script>
+    </div>
+  </body>
+</html>
