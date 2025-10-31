@@ -1,0 +1,122 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카운터</title>
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 50px">
+      <h1>장바구니</h1>
+      <p>상품 개수: <span id="count">0</span>개</p>
+      <button onclick="addItem()">상품 추가</button>
+      <button onclick="removeItem()">상품 삭제</button>
+      <button onclick="resetCart()">장바구니 비우기</button>
+
+      <div id="status" style="margin-top: 20px; font-weight: bold"></div>
+    </div>
+
+    <script>
+      let itemCount = 0;
+      const MAX_ITEMS = 5;
+
+      function addItem() {
+        if (itemCount < MAX_ITEMS) {
+          itemCount++;
+        }
+        updateDisplay();
+      }
+      function removeItem() {
+        if (itemCount > 0) {
+          itemCount--;
+        }
+        updateDisplay();
+      }
+      function resetCart() {
+        itemCount = 0;
+        updateDisplay();
+      }
+
+      function updateDisplay() {
+        // 변경시킬 대상 찾기
+        const countElement = document.getElementById("count");
+        const statusElement = document.getElementById("status");
+
+        countElement.textContent = itemCount;
+
+        if (itemCount === 0) {
+          statusElement.textContent = "장바구니가 비어있습니다.";
+          statusElement.style.color = "gray";
+        } else if (itemCount < 5) {
+          statusElement.textContent = "더 담아주셈!!!";
+          statusElement.style.color = "blue";
+        } else {
+          statusElement.textContent = "장바구니가 가득 찼습니다.";
+          statusElement.style.color = "red";
+        }
+      }
+      updateDisplay();
+    </script>
+  </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="main-title">DOM 요소 연습</h1>
+    <p id="description">이 문장을 자바스크립트로 변경하겠습니다</p>
+    <button id="select-btn">요소 선택하기</button>
+
+    <script>
+      document.getElementById("select-btn").onclick = function () {
+        const descElement = document.getElementById("description");
+
+        console.log(descElement);
+        console.log(descElement.tagName);
+        console.log(descElement.id);
+      };
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다중 선택</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+      .box {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" class="box">첫 번째 박스</div>
+    <div id="box2" class="box">두 번째 박스</div>
+    <div id="box3" class="box">세 번째 박스</div>
+    <button id="highlight-btn">모든 박스 강조하기</button>
+
+    <script>
+      document.getElementById("highlight-btn").onclick = function () {
+        const box1 = document.getElementById("box1");
+        const box2 = document.getElementById("box2");
+        const box3 = document.getElementById("box3");
+
+        box1.className += " highlight";
+        box2.className += " highlight";
+        box2.className += " highlight";
+      };
+    </script>
+  </body>
+</html>

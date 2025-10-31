@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다중 선택</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+      .box {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" class="box">첫 번째 박스</div>
+    <div id="box2" class="box">두 번째 박스</div>
+    <div id="box3" class="box">세 번째 박스</div>
+    <div id="box4" class="box">네 번째 박스</div>
+    <button id="highlight-btn">모든 박스 강조하기</button>
+
+    <script>
+      document.getElementById("highlight-btn").onclick = function () {
+        // const box1 = document.getElementById("box1");
+        // const box2 = document.getElementById("box2");
+        // const box3 = document.getElementById("box3");
+
+        // box1.className += " highlight";
+        // box2.className += " highlight";
+        // box3.className += " highlight";
+
+        const boxes = document.querySelectorAll(".box");
+
+        boxes.forEach(function (boxElement) {
+          // 각각의 박스 요소에 highlight 클래스를 추가하자
+          boxElement.classList.add("highlight");
+        });
+      };
+    </script>
+  </body>
+</html>

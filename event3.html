@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=r, initial-scale=1.0" />
+    <title>계산기</title>
+    <script>
+      function calculate() {
+        // 두 input 태그에서 문자열 값을 가져옵니다.
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let result = document.getElementById("result");
+
+        // eval() 함수를 사용하여 두 수를 더하는 수식 문자열을 계산합니다.
+        // 예: num1이 "10", num2가 "20"이면 eval("10" + "+" + "20") 즉, eval("10+20")이 됩니다.
+        result.value = eval(num1 + "+" + num2);
+      }
+    </script>
+  </head>
+  <body>
+    <h3>전자 계산기</h3>
+    <hr />
+    두 개의 정수를 입력하고 계산 버튼을 눌러주세요.
+    <br /><br />
+    <form>
+      정수 1 <input type="text" id="num1" value="" autofocus /><br />
+      정수 2 <input type="text" id="num2" value="" /><br />
+      결과 <input type="text" id="result" value="" readonly /><br />
+      <input type="button" value="계산  " onclick="calculate()" />
+    </form>
+  </body>
+</html>

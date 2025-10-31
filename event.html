@@ -1,0 +1,258 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리스너</title>
+    <script>
+      let p; // 변수 선언
+      function init() {
+        //초기화의 의미와 같다 = 시작과 동시에 작동해야한다. 초기화를 위한 함수
+        p = document.getElementById("p"); //p라는 id인 글자를 찾아서 p에 담자
+        // p.onmouseover = over; //p에 마우스가 올라가면 over를 실행하시오
+        // p.onmouseout = out; //p에서 마우스가 벗어나면 out을 실행하시오
+        p.addEventListener("mouseover", over); 
+        p.addEventListener("mouseout", out);
+      }
+      function over() {
+        p.style.backgroundColor = "orchid";
+      }
+      function out() {
+        p.style.backgroundColor = "white";
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <h3>리스너 이벤트</h3>
+    <hr />
+    <p id="p">마우스 올리면 변경됨</p>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 연결 방식의 차이</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #f0f2f5;
+      }
+      .description {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        color: #555;
+      }
+      #target-element {
+        /* 마우스 이벤트를 받을 주인공 요소 */
+        width: 300px;
+        height: 100px;
+        margin: 30px auto;
+        border: 2px solid #ccc;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        transition: all 0.3s ease; /* 변화를 부드럽게 */
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+      .old-btn {
+        background-color: #f39c12;
+      } /* 주황색 버튼 */
+      .old-btn:hover {
+        background-color: #e67e22;
+      }
+      .new-btn {
+        background-color: #2ecc71;
+      } /* 초록색 버튼 */
+      .new-btn:hover {
+        background-color: #27ae60;
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <h1>`onmouseover` vs `addEventListener` 차이점</h1>
+    <p class="description">
+      아래 "여기에 마우스를 올려보세요!" 박스에 마우스를 올렸다 내렸다
+      해보며,<br />
+      버튼들을 눌러서 각 방식의 차이를 확인해보세요!
+    </p>
+
+    <div id="target-element">여기에 마우스를 올려보세요!</div>
+
+    <p>
+      **옛날 방식 (덮어쓰기 발생! 🚨)**<br />
+      버튼을 순서대로 눌러보세요. 나중에 누른 버튼의 기능만 동작해요!
+      <button class="old-btn" onclick="addOldWayListener1()">
+        옛날 방식 1번 기능 추가
+      </button>
+      <button class="old-btn" onclick="addOldWayListener2()">
+        옛날 방식 2번 기능 추가
+      </button>
+    </p>
+
+    <p>
+      **최신 방식 (협력해서 모두 동작! 🎉)**<br />
+      버튼을 순서대로 눌러보세요. 모든 기능이 함께 동작하는 걸 볼 수 있어요!
+      <button class="new-btn" onclick="addNewWayListener1()">
+        최신 방식 1번 기능 추가
+      </button>
+      <button class="new-btn" onclick="addNewWayListener2()">
+        최신 방식 2번 기능 추가
+      </button>
+    </p>
+
+    <p>
+      <button onclick="resetAll()">모든 기능 초기화</button>
+    </p>
+
+    <script>
+      let targetElement; // 마우스 이벤트를 받을 주인공 요소
+
+      function init() {
+        targetElement = document.getElementById("target-element");
+      }
+
+      // --- 1. 옛날 방식 함수들 (onmouseover / onmouseout) ---
+      // 마우스를 올렸을 때 기능 1
+      function oldOver1() {
+        targetElement.style.backgroundColor = "lightblue"; // 배경색 변경
+        targetElement.textContent = "옛날 방식: 1번 기능 작동!"; // 텍스트 변경
+        console.log("옛날 방식: 1번 기능 작동!");
+      }
+      // 마우스를 떼었을 때 기능 1 (원상 복구)
+      function oldOut1() {
+        targetElement.style.backgroundColor = "white";
+        targetElement.textContent = "여기에 마우스를 올려보세요!";
+        targetElement.style.border = "2px solid #ccc"; // 보더 초기화 (혹시 다른게 영향을 줬을까봐)
+      }
+
+      // 마우스를 올렸을 때 기능 2
+      function oldOver2() {
+        targetElement.style.backgroundColor = "lightcoral"; // 다른 배경색 변경
+        targetElement.textContent = "옛날 방식: 2번 기능 작동!"; // 다른 텍스트 변경
+        console.log("옛날 방식: 2번 기능 작동!");
+      }
+      // 마우스를 떼었을 때 기능 2 (원상 복구)
+      function oldOut2() {
+        targetElement.style.backgroundColor = "white";
+        targetElement.textContent = "여기에 마우스를 올려보세요!";
+        targetElement.style.border = "2px solid #ccc";
+      }
+
+      // 옛날 방식으로 리스너를 추가하는 버튼 함수
+      function addOldWayListener1() {
+        resetElement(); // 이전 효과 초기화
+        // ✨ 중요! onmouseover에 oldOver1 할당
+        targetElement.onmouseover = oldOver1;
+        targetElement.onmouseout = oldOut1;
+        console.log("--- 옛날 방식 1번 기능이 등록되었습니다 ---");
+      }
+
+      function addOldWayListener2() {
+        resetElement(); // 이전 효과 초기화
+        // ✨ 중요! onmouseover에 oldOver2 할당 -> oldOver1 기능이 덮어쓰여집니다!
+        targetElement.onmouseover = oldOver2;
+        targetElement.onmouseout = oldOut2;
+        console.log(
+          "--- 옛날 방식 2번 기능이 등록되었습니다 (1번 기능을 덮어씀!) ---"
+        );
+      }
+
+      // --- 2. 최신 방식 함수들 (addEventListener) ---
+      // 마우스를 올렸을 때 기능 A
+      function newOverA() {
+        targetElement.style.backgroundColor = "lightgreen"; // 배경색 변경
+        console.log("최신 방식: A 기능 (배경색 변경) 작동!");
+      }
+      // 마우스를 떼었을 때 기능 A (원상 복구)
+      function newOutA() {
+        targetElement.style.backgroundColor = "white";
+        console.log("최신 방식: A 기능 (배경색 변경) 해제!");
+      }
+
+      // 마우스를 올렸을 때 기능 B
+      function newOverB() {
+        targetElement.style.border = "3px dashed purple"; // 테두리 추가
+        targetElement.textContent += " (기능B 활성화!)"; // 텍스트 추가
+        console.log("최신 방식: B 기능 (테두리, 텍스트 추가) 작동!");
+      }
+      // 마우스를 떼었을 때 기능 B (원상 복구)
+      function newOutB() {
+        targetElement.style.border = "2px solid #ccc";
+        targetElement.textContent = "여기에 마우스를 올려보세요!"; // 텍스트 초기화
+        console.log("최신 방식: B 기능 (테두리, 텍스트 추가) 해제!");
+      }
+
+      // 최신 방식으로 리스너를 추가하는 버튼 함수
+      function addNewWayListener1() {
+        resetElement(); // 이전 효과 초기화
+        // ✨ 중요! addEventListener로 newOverA 기능 추가
+        targetElement.addEventListener("mouseover", newOverA);
+        targetElement.addEventListener("mouseout", newOutA);
+        console.log("--- 최신 방식 1번 기능이 추가되었습니다 ---");
+      }
+
+      function addNewWayListener2() {
+        // 이전에 add된 기능이 그대로 살아있습니다!
+        // ✨ 중요! addEventListener로 newOverB 기능 추가 -> 이전 기능과 함께 작동!
+        targetElement.addEventListener("mouseover", newOverB);
+        targetElement.log(
+          "--- 최신 방식 2번 기능이 추가되었습니다 (1번 기능과 함께 작동!) ---"
+        );
+        targetElement.addEventListener("mouseout", newOutB);
+      }
+
+      // --- 초기화 및 재설정 함수 ---
+      function resetElement() {
+        // 모든 style 및 text 초기화
+        targetElement.style.backgroundColor = "white";
+        targetElement.style.border = "2px solid #ccc";
+        targetElement.textContent = "여기에 마우스를 올려보세요!";
+
+        // ✨ 모든 기존 이벤트 핸들러를 제거합니다.
+        // 이것은 시연을 위해 onxxx와 addEventListener의 차이를 명확히 하기 위함입니다.
+        // 실제 앱에서는 reset할 때 필요한 이벤트만 제거합니다.
+        targetElement.onmouseover = null;
+        targetElement.onmouseout = null;
+
+        // addEventListener로 추가된 이벤트는 removeEventListener로만 제거할 수 있습니다.
+        targetElement.removeEventListener("mouseover", oldOver1);
+        targetElement.removeEventListener("mouseout", oldOut1);
+        targetElement.removeEventListener("mouseover", oldOver2);
+        targetElement.removeEventListener("mouseout", oldOut2);
+        targetElement.removeEventListener("mouseover", newOverA);
+        targetElement.removeEventListener("mouseout", newOutA);
+        targetElement.removeEventListener("mouseover", newOverB);
+        targetElement.removeEventListener("mouseout", newOutB);
+
+        console.log("모든 이벤트 및 스타일이 초기화되었습니다.");
+      }
+
+      function resetAll() {
+        resetElement();
+        console.clear(); // 콘솔 메시지도 초기화
+        console.log(
+          "시연을 위해 모든 리스너와 스타일이 완전히 초기화되었습니다."
+        );
+        console.log("이제 다시 버튼들을 눌러보며 차이점을 확인해주세요!");
+      }
+    </script>
+  </body>
+</html>
