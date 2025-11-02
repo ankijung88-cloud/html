@@ -1,0 +1,363 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aliceblue;
+  color: black;
+}
+
+section {
+  padding: 40px 10%;
+}
+
+section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(84, 66, 66, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./images/DSCF4997.JPG) center no-repeat;
+  background-size: cover;
+  padding: 10px 8%;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+nav .logo {
+  font-size: 32px;
+  color: red;
+  cursor: pointer;
+}
+
+nav button {
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  padding: 10px 24px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid white;
+  background-color: transparent;
+}
+
+.lang i:nth-child(1) {
+  margin-right: 8px;
+}
+
+.lang i:nth-child(2) {
+  margin-left: 5px;
+}
+
+.header-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.header-content h2 {
+  font-size: 60px;
+  color: aliceblue;
+  line-height: 1.4;
+  font-weight: 600;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.header-content h3 {
+  color: aliceblue;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.header-content p {
+  color: aliceblue;
+  margin-bottom: 10px;
+}
+
+.header-content button {
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  padding: 10px 24px;
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.banner {
+  background: #3b3b3b;
+}
+
+.banner-content {
+  border-radius: 6px;
+  background: linear-gradient(to right, #651c3d 0%, #280a2b 60%);
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.banner-content p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+}
+.banner-content button {
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  background: rgba(128, 128, 128, 0.4);
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.banner ul {
+  display: flex;
+  color: white;
+  background: linear-gradient(to right, #651c3d 0%, #280a2b 60%);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.banner ul li {
+  list-style: none;
+  margin-left: 16px;
+}
+
+.select-menu {
+  border: 1px solid #fff; /* 테두리 */
+  background-color: transparent; /* 배경색 투명 */
+  color: #fff;
+  padding: 10px 24px; /* 안쪽 여백 */
+  margin-top: 5px; /* 위쪽 마진 */
+  font-size: 16px; /* 글자 크기 */
+}
+.select-menu option {
+  background-color: #2b2b2b; /* 배경색 */
+  color: #fff; /* 글자색 */
+}
+
+.membership-content {
+  border-radius: 6px;
+  background: linear-gradient(
+      to right,
+      rgb(101, 28, 61, 0.9) 0%,
+      rgba(40, 10, 43, 0.5) 60%
+    ),
+    url(./images/DSCF4997.JPG) no-repeat right center;
+  padding: 60px 40px;
+  margin-bottom: 40px;
+}
+.membership-content p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+}
+
+.choice {
+  font-size: 22px;
+  background-color: rgb(94, 39, 68);
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+}
+
+.choice-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.info .select-product {
+  border: 1px solid #fff; /* 테두리 */
+  background-color: transparent; /* 배경색 투명 */
+  color: #fff;
+  padding: 10px 24px; /* 안쪽 여백 */
+  margin-top: 5px; /* 위쪽 마진 */
+  font-size: 16px; /* 글자 크기 */
+}
+.info .select-product option {
+  background-color: #2b2b2b; /* 배경색 */
+  color: #fff; /* 글자색 */
+}
+
+.faq .accordion {
+  width: 100%;
+  max-width: 750px;
+  margin: 60px auto;
+}
+
+.accordion li {
+  list-style: none;
+  width: 100%;
+  padding: 5px;
+}
+.accordion li label {
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  background: #303030;
+  margin-bottom: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.accordion li label::after {
+  content: "\2b";
+  font-size: 40px;
+  position: absolute;
+  right: 20px;
+  transition: 0.5s;
+}
+
+.accordion input[type="radio"] {
+  display: none;
+}
+
+.accordion .content {
+  color: aliceblue;
+  background: #3b3b3b;
+  font-size: 22px;
+  line-height: 1.6;
+  text-align: left;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.accordion input[type="radio"]:checked + label + .content {
+  /* input[type="radio"]에 체크하면 */
+  max-height: 600px;
+  padding: 30px 20px;
+}
+
+.accordion input[type="radio"]:checked + label::after {
+  /* input[type="radio"]에 체크하면 */
+  transform: rotate(-135deg);
+}
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsletter p {
+  padding: 20px 2%;
+}
+
+.newsletter button {
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px 24px;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  background: #3b3b3b;
+  padding: 60px 10%;
+}
+.footer-content {
+  display: flex;
+  color: aliceblue;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+}
+.footer-content a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  text-decoration: none;
+}
+.left {
+  flex-basis: 60%;
+}
+.center,
+.right {
+  flex-basis: 20%;
+  vertical-align: top;
+}
+.col h2 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.col h3 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.footer-nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin-bottom: 40px;
+}
+.footer-nav li:not(:last-child) {
+  padding-right: 20px;
+  border-right: 1px solid #eee;
+}
+.footer-info {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.socials {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+}
+.socials a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+.copyright {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+.footer-content p {
+  font-size: 14px;
+  line-height: 0.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
