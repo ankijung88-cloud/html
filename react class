@@ -1,0 +1,288 @@
+// import User from './components/User'
+
+// function App() {
+// const userObj = {
+//   name: '철수',
+//   age: 20,
+// }
+// const clickHandle = () => {
+//   console.log('clicked')
+// }
+//   return <User userObj={userObj} clickHandler={clickHandle} />
+// }
+
+// export default App
+//구조분해할당 - 객체 또는 배열의 속성을 추출하여 변수에 할당한다.
+
+// import React from 'react'
+
+// const App = () => {
+//   const clickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+//     console.log(e)
+//   }
+//   return (
+//     <>
+//       <button onClick={clickHandler}>클릭하세요</button>
+//     </>
+//   )
+// }
+
+// export default App
+//화살표 함수란 특정한 상황에서만 가등되어야 할 때
+//일반 함수 형태로 만들면 무조건 실행이 되버린다
+//화살표 함수는 무조건 실행이 아니고 특정한 상황에서만 가동할 수 있도록 하는 것이다.
+
+//랜더링 :웹브라우저가 홤변을 처음부터 다시 그림다. 예) 브라우저재실행 F5
+//한 하나라도 변화가 있어야만 랜더링을 다시 한다.
+
+// const App = () => {
+//   let name = '철수'
+//   const age = 20
+//   const nameChange = () => {
+//     name = '영희'
+//     console.log(name)
+//   }
+
+//   return (
+//     <>
+//       <p>{name}</p>
+//       <p>{age}</p>
+//       <button onClick={nameChange}>Value Change</button>
+//     </>
+//   )
+// }
+
+// export default App
+
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [count, setCount] = useState(0)
+
+//   return (
+//     <>
+//       <button onClick={() => setCount(count + 1)}>동전 한개 추가</button>
+//       <button onClick={() => setCount(count - 1)}>동전 한개 빼기</button>
+//       <h2>현재 동전 개수: {count}개</h2>
+//     </>
+//   )
+// }
+
+// export default App
+
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [isDarkMode, setIsDarkMode] = useState(false)
+// const bgColor = isDarkMode ? '#333' : '#fff'
+//   const textColor = isDarkMode ? '#fff' : '#333'
+
+//   return (
+//     <>
+//       <h3>전등 스위치</h3>
+//       <p>지금은 {isDarkMode ? '밤' : '낮'} 모드입니다.</p>
+//       <button onClick={() => setIsDarkMode(!isDarkMode)}>
+//         {isDarkMode ? '&#x2600 낮' : ' 밤'}
+//       </button>
+//     </>
+//   )
+// }
+
+// export default App
+
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [text, setText] = useState('')
+//   return (
+//     <>
+//       <h3>글자 수를 세어보자</h3>
+//       <textarea
+//         placeholder="여기에 글씨를 써 보세요!"
+//         value={text} //조수에게 현재 글씨가 뭔지 보여줘!
+//         // 글씨가 바뀌면 조수에게 '새로운 글씨'로 바꿔달라고 부탁해!
+//         onChange={e => setText(e.target.value)}
+//         rows={4}
+//         style={{ width: '90%', resize: 'vertical', padding: '8px' }}
+//       ></textarea>
+//       <p>지금까지 {text.length} 글자를 입력하였습니다!!!</p>
+//     </>
+//   )
+// }
+
+// e{useState} default App
+
+// import { useState } from 'react'
+// // FAQ제목 칸을 만들때 사용한다.
+// const App = () => {
+//   const [isExpanded, setIsExpanded] = useState(false)
+//   const fullText =
+//     '옛날 옛날 아주 먼 옛날, 평화로운 왕국에 용감한 기사와 아름다운 공주가 살았습니다. 어느 날, 사악한 용이 나타나 공주를 납치해 갔습니다. 기사는 공주를 구하기 위해 위험한 모험을 떠났습니다. 험난한 산을 넘고, 깊은 강을 건너, 마침내 용의 동굴에 도착했습니다. 용과의 치열한 싸움 끝에 기사는 승리했고, 공주를 안전하게 구출했습니다. 왕국은 다시 평화를 되찾았고, 기사와 공주는 영원히 행복하게 살았답니다.'
+//   const summaryText = fullText.substring(0, 100) + '...'
+
+//   return (
+//     <>
+//       <h3>더 보기 기능</h3>
+//       <p>
+//         {isExpanded ? fullText : summaryText}
+//         <button onClick={() => setIsExpanded(!isExpanded)}>
+//           {isExpanded ? '간단하게 보기' : '전체 보기'}
+//         </button>
+//       </p>
+//     </>
+//   )
+// }
+
+// export default App
+
+//비밀번호 *******8
+//실제 입력 내용을 표시하도록 하자
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [showPassword, setShowPassword] = useState(false)
+//   const [password, setPassword] = useState('')
+
+//   return (
+//     <>
+//       <h3>비밀번호 엿보기</h3>
+//       <div style={{ display: 'flex', alignItems: 'center' }}>
+//         <input
+//           type={showPassword ? 'text' : 'password'} // 마법 안경 상태에 따라 타입 변경!
+//           value={password}
+//           onChange={e => setPassword(e.target.value)}
+//           style={{ padding: '8px', marginRight: '10px' }}
+//         />
+//         <button onClick={() => setShowPassword(!showPassword)}>
+//           {showPassword ? '숨기기 🙈' : '보이기 👀'}
+//         </button>
+//       </div>
+//     </>
+//   )
+// }
+
+// export default App
+
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [likeCount, setLikeCount] = useState(0)
+//   const [isLiked, setIsLiked] = useState(false)
+
+//   const handleLikeClick = () => {
+//     if (isLiked) {
+//       setLikeCount(likeCount - 1)
+//     } else {
+//       setLikeCount(likeCount + 1)
+//     }
+//     setIsLiked(!isLiked)
+//   }
+
+//   return (
+    <div
+      style={{
+        border: '1px solid #007bff',
+        padding: '15px',
+        borderRadius: '8px',
+        marginBottom: '20px',
+      }}
+    >
+      <h3>👍 칭찬 도장: useState</h3>
+      <p>이 게시물이 도움이 되셨나요? (총 **{likeCount}**개 좋아요!)</p>
+      <button
+        onClick={handleLikeClick}
+        style={{
+          backgroundColor: isLiked ? '#007bff' : '#eee',
+          color: isLiked ? 'white' : '#333',
+          border: '1px solid #007bff',
+        }}
+      >
+        {isLiked ? '❤️ 좋아요 취소!' : '🤍 좋아요!'}
+      </button>
+    </div>
+// }
+
+// export default App
+
+useState 상태관리
+하나 > 둘 이상
+useState가 두 개 이상 여러개 서술해야 한다
+
+useReducer
+reducer 함수
+초기값
+dispatch > 갈림길 > 선택 사항
+
+0 > 클릭 1증가 > 클릭 1감소
+
+{키:} 이 모양은 객체이다
+
+throw > 예외
+
+import { useState } from 'react'
+
+// 로보트에게 일 시키자
+// 현재 상태 확인
+// 내가 지시한 내용 실행
+// state {count:number}>state는 숫자라고 약속하자
+
+const App = () => {
+  const [state, setState] = useState(0)
+  const increment = () => {
+    setState(state + 1)
+  }
+  const decrement = () => {
+    setState(state + 1)
+  }
+  return (
+    <>
+      <h3>숫자 카운트</h3>
+      <p>현재 숫자: {state}</p>
+      <button onClick={increment}>하나 늘려</button>
+      <button onClick={decrement}>하나 줄여</button>
+    </>
+  )
+}
+
+export default App
+
+import { useReducer } from 'react'
+
+function counterReducer(
+  state: { count: number },
+  action: { type: 'INCREMENT' } | { type: 'DECREMENT' } | { type: 'RESET' }
+): { count: number } {
+  switch (
+    action.type // action.type에 따라 다른 동작을 시킨다
+  ) {
+    case 'INCREMENT': //하나 늘리라는 지시가 들어온 경우
+      return { count: state.count + 1 }
+    case 'DECREMENT': // 하나 줄이라는 지시가 들어온 경우
+      return { count: state.count - 1 }
+    case 'RESET': // 하나 줄이라는 지시가 들어온 경우
+      return { count: (state.count = 0) }
+    default: // 예상치 못한(알지 못하는) 지시가 들어온 경우
+      throw new Error('알 수 없는 액션 타입입니다.')
+  }
+}
+
+const App = () => {
+  const initialState: { count: number } = { count: 0 }
+  //처음 시작할 때 시작값은'0'이야
+  const [state, dispatch] = useReducer(counterReducer, initialState)
+  //useReducer를 부르는 주문이다
+  //counterReducer<실제적으로 작업을 진행하는 심부름 꾼
+  //진행하는 심부름꾼에게 초기값이 initialState에 들어있다
+  //useReducer은 항상 두가지 정보를 반환한다.
+  //1. 심부름꾼이 관리하고 있는 것의 상태
+  //2. 심부름꾼에게 일을 시킬 수 있는 작동 버튼
+
+  return (
+    <>
+      <p>현재 상태: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>증가</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>감소</button>
+      <button onClick={() => dispatch({ type: 'RESET' })}>초기화</button>
+    </>
+  )
+}
