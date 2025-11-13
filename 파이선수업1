@@ -1,0 +1,561 @@
+numbers = [10, 7, 1, 4, 2]
+
+print("정렬 전 리스트:", numbers)
+
+for i in range(len(numbers) - 1):
+  min_index = i
+  for j in range(i + 1, len(numbers)):
+    if numbers[j] < numbers[min_index]:
+      min_index = j
+
+  if min_index != i:
+    numbers[i], numbers[min_index] = numbers[min_index], numbers[i]
+
+print("오름차순 정렬 후 리스트 (선택 정렬):", numbers)
+
+
+# a = 4.24E10
+# 4.24*(10**10) : E10 은 10을 밑으로 하는 지수 10의 3승을 뜻한다
+# b = 4.24E-10
+
+a = 0o177
+print(a)
+# a은 127로 십진수로 변환되어 나온다
+
+b = 0xabc
+print(b)
+
+c = 2 ** 3
+print(c)
+
+d = 5 / 2
+# 정수형끼리 계산을 진행하면 결과가 반드시 정수로 나타난다
+# 정수형끼리 계산을 진행하여도 나누어 떨어지지 않으면 실수로 나타난다
+e = 5 // 2
+# 몫을 구한다
+print(d)
+print(e)
+f = 5 % 2
+#나머지를 구한다
+print(f)
+
+#a=8
+# += -= *= /= //= **= 모두 될수있다
+
+'' 1개의 문자열에 적용
+"" 2개이상의 문자열에 적
+"""안녕하세요""" 따옴표를 세개적용하면 입력한 모습대로 출력된다. 자주사용하지 않음
+
+\n 줄바꿈 : 이걸 많이 사용함. 문자열 중간 줄바꿈을 하고자하는 구간에 입력하여 사용한다.
+
+이스케이프 문자열 escape 이라고 명칭한다.
+
+시퀀스 자료형 = 리스트 : 튜플 : 딕셔너리
+시퀸스  : 순서가 중요하다. 순서를 무시할 수 없다.
+방번호로 컨트롤한다. index number = lengh()
+
+
+#인덱스 & 슬라이싱
+e=[1,2,3]
+e[0]+e[2] 의 의미는 1,3번방의 값을 더한다
+e[-1] 의 의미는 마지막 방의 값을 의미한다.
+
+f[2][2][2] 자바스크립트의 3차원 배열과 같다. 
+
+# a = "12345"
+# b = a[:2]
+# a = list("12345")
+#
+# a[0:2]
+# b[0:2]
+# print(a[0:2])
+# print(b[0:2])
+from enum import nonmember
+
+# a = [1, 2, 3, 4, 5, ['a', 'b']]
+# print(a[2:5])
+
+
+a = [9, 2, 7]
+a.append(4)
+# append는 마지막에 추가하는것을 의미
+a.sort()
+# 원본리스트의 내부 요소가 정렬된 상태로 다시 재 구성된다.
+print(a)
+# print(a.sort()) 변경된 사항을 인지할 방법이 없다.
+
+# 숫자로 문자열을 바꾸고 문자를 숫자로 바꿀수있다
+# sort()
+# sorted() 원본은 그대로 두고 재정렬된 사본을 불러낸다
+# .insert(index,object) 중간에 삽입 (원본을 삭제하지않고 엑셀과 동일하게 옆으로 밀어낸다)
+original_list = [9, 2, 7, 4, 9, 2, 7, 4, 9, 2, 7, 4]
+# original_list.insert(3, 5)
+# print(original_list)
+original_list.remove(2)
+# 첫번째 값에만 적용된다.
+# index 3이 아니라 값이다.
+print(original_list)
+
+# pop() 꺼내기 맨뒤것을 꺼낸다. 괄호에 값을 넣을시 index번호로 적용된다.
+# .count() 괄호안에 숫자를 넣으면 원본에 있는 같은 숫자의 수량을 출력한다.
+# .extand([4,5]) 원본뒤에 4,5를 새로만들어진(확장된) 두개의 index방에 입력한다.
+# a +=[4,5] 는 extand와 같다. a = a + [4,5]
+
+# 튜플 최초 입력 데이터 > 절대불변
+t1 = ()
+t3 = (1, 2, 3)
+t5 = ('a', 'b', ('ab', 'cd'))
+
+t2 = (1,)
+t4 = 1, 2, 3
+# 파이썬에서는 위5가지 유형을 튜플로 인정한다
+# 튜플은 요소값을 변화시킬 수 없다는 점만 제외하면 리스트와 완전히 동일히다
+t1 = (1, 2, 'a', 'b')
+t1[1:]
+t2 = (5, 9)
+t3 = t1 + t2
+print()
+
+# 딕셔너리 -'연관 배열(associative array)'또는 '해시(hash)'
+# 배열은 {1대1} 딕셔너리는 {1대 다수}
+# [{key: value},{},{}여러번 사용가능]
+
+# a={1:'a'}
+# a[2]='b'
+# {1:'a',2:'b'}
+# a['name']='pey'
+# {1:'a',2:'b','name':'pey'}
+# a[3]=[1,2,3]
+# {1:'a',2:'b','name':'pey',3:[1,2,3]}
+# del=a[1]
+# {2:'b','name':'pey',3:[1,2,3]}
+
+# a = {'name': 'pey', 'phone': '0101-2929-392'}
+# print(a.items())
+# list_of_items = list(a.items())
+# print(list_of_items)
+# # 키와 값의 형태를 새로운 리스트 형태로 변환한다.
+# a.clear()
+# a.get('phone')
+# a.get('tel') >>> none
+# 'name' in a a는 참 또는 거짓을 의미한다# 집합 set
+# 중복 불허, 순서가 없다. - 교집합, 차집합, 합집합
+#
+# s1=set([1,2,3])
+# print(s1)
+#
+# s2=set("hello")
+# print(s2)
+#
+# s3={1,2,3}
+# print(s3)
+# s4={'a','b','c'}
+# s5=set()
+# s6={}
+# s6는 태생이 딕셔너리이다
+
+s1 = set([1, 2, 3, 4, 5, 6])
+# s2=set([4,5,6,7,8,9])
+# s1 & s2
+# &는 교집합을 표현
+# s1.intersection(s2)교집합을 표현
+#
+# s1 | s2 중복은 한번만 나오도록 전체를 표현
+# s1.union(s2) 1,2,3,4,5,6,7,8,9
+#
+# s1-s2 차집합
+# s1.difference(s2)
+
+# s1.add(9)
+# print(s1)
+# 마지막 index에 추가 인덱스 번호 지정 불가
+# s1.update([5,6,7])
+# s1.remove(3)
+# # 순서가 없음 같은 값을 삭제
+# s1.discard(190)
+# # 없는값을 지우라고 명령해도 오류가 발생하지 않는다.
+# print(s1)
+
+pocket = ['paper', 'cellphone']
+# 
+# # if 'money' in pocket:
+# #   pass
+# # # 계획단계이므로 임시로 써놓은 말-오류방지용
+# # else:
+# #   print("카드를 꺼내시오")
+# card = True
+# if 'money' in pocket:
+#   print("택시를 타고 가라")
+# elif card:
+#   print("택시를 타고 가라")
+# else:
+#   print("걸어가라")
+
+treeHit = 0
+# while treeHit < 10:
+#   treeHit = treeHit + 1
+#   print("나무를 %d 번 찍었습니다!!!" % treeHit)
+#   if treeHit == 10:
+#     print("나무가 넘어간다")
+# # 출력형식을 지정한다 > formatter  4행의 d는 10진수를 의미한다. 다른 문자가 오면 다른것을 의미한다number = 0
+while number != 4:
+  try:
+    print("1. 숫자 1을 선택")
+    print("2. 숫자 2을 선택")
+    print("3. 숫자 3을 선택")
+    print("4. 숫자 4을 선택")
+
+    user_input_str = input("메뉴를 선택하세요(1부터 4가지의 정수만): ")
+    number = int(user_input_str)
+
+    if 1 <= number <= 3:
+      print(" %d 번 메뉴를 선택하셨습니다.!!!" % number)
+    elif number != 4:
+      print("정확한 메뉴를 선택하세요!!!")
+
+  except ValueError:
+    print("잘못된 입력 > 숫자를 입력하세요!!!")
+
+print("종료되었습니다.!!")
+
+try///////except/////예외처리!!!!!!!!
+
+
+
+coffee = 10
+
+while True:
+  money = int(input("돈을 넣어 주세요!!!: "))
+  if money == 300:
+    print("커피를 준다")
+    coffee = coffee - 1
+    print("남은 커피는 %d개 입니다." % coffee)
+  elif money > 300:
+    print("잔돈 %d를 주기!!! 커피 주기!!!" % (money - 300))
+    coffee = coffee - 1
+    print("남은 커피는 %d개 입니다." % coffee)
+  else:
+    print("돈을 그대로 돌려주기")
+    print("남은 커피는 %d개 입니다." % coffee)
+  if coffee == 0:
+    print("재고 없음!!!")
+    break
+
+
+# # test_list = ['one', 'two', 'three']
+# #
+# # for i in test_list:
+# #   print(i)
+# 
+# # a = [(1, 2), (3, 4), (5, 6)]
+# #
+# # for (f, s) in a:
+# #   print(f + s)
+# # 총5명의 학색이 시험을 보았는데 시험 점수가 60점 이상이면 합격이고 그렇지 않으면 불합격이다
+# # 합격인지 불합격인지 결과를 보여주시오
+# # 출력 : 학생들의 일련번호도 같이 출력하시오
+# marks = [90, 25, 67, 45, 80]
+# no = 0
+# for s in marks:
+#   no = no + 1
+#   if s >= 60:
+#     print(" %d번 학생은 합격" % no)
+#   # else :
+#   #   print(" %d번 학생은 불합격" % no)
+#   continue
+# #  continue : 이 문구를 실행하면 그 이하 코드는 무시하고 다시 반복의 시작으로 돌아간다.
+# #  위 프로그램에서 불합격인 경우에는 아무런 문구를 출력하지 않는다.
+# 
+# marks = [90, 25, 67, 45, 80]
+# no = 0
+# for s in marks:
+#   no = no + 1
+#   if s < 60:
+#     continue
+#   # else :
+#   #   print(" %d번 학생은 불합격" % no)
+#   print(" %d번 학생은 합격" % no)
+# 
+# add = 0
+# for i in range(1, 11):
+#   add = add + (1 / i)
+# print(add)
+
+# def print_n_times(value, n):
+#   for i in range(n):
+#
+#     print(value)
+# print_n_times("안녕", 3)
+
+# 가변 매개변수 *j : 매개변수 앞에 * 가 있으면 가변매개변수가 되어 여러개의 값을 넣을 수 있다
+
+# def abc(n, *j):
+#   for i in range(n):
+#     for f in j:
+#       print(j)
+#
+#
+# abc(3, "안녕", "하이", "한국")
+
+
+# 기본 매개변수 : 함수의 기본매개변수는 괄호안의 마지막 지정변수에만 적용된다
+
+# def abc(x, y, z=3):
+#   print(x, y, z)
+#   # for i in range(n):
+#   #   print(value)
+#   # pass
+#
+#
+# abc(20, 30)
+
+# 기본 매개변수 & 가변 매개변수
+
+# def abc(*values, n=2):
+#   for i in range(n):
+#     for value in values:
+#       print(value)
+#
+#
+# abc("안녕", "하이", "한국", 7)
+# abc("안녕", "하이", "한국", n=7) 기본값을 입력해주면 값만큼 반복을 하는데 이렇게 매개변수이름을 지정하는 것을 키워드매개변수 라고한다.
+# def test(a, b=10, c=100):
+#   print(a + b + c)
+#
+#
+# test(a=1, b=7, c=9)
+# test(c=8, a=1, b=9)
+# test(10, c=7)
+
+# def test():
+#   return
+# r = test()
+# print(r)
+
+# 범위 내부의 정수를 모두 더하는 함수
+# 두 정수를 인수로 설정하여 (3,5) 3부터 5까지의 홀수의 덧셈(누적) 결과를 출력하는 함수
+# step: 단계 : 기본적으로 1인 경우에는 생략이 가능하다. 없으면 1로 인지된다.
+# def sum_all(start, end):
+#   output = 0
+#   for i in range(start, end + 1):
+#     if i % 2 == 0:
+#       output += i
+#   return output
+#
+#
+# r = sum_all(1, 10)
+# print(r)
+
+# def sum_all_optimized(start, end):
+#   output = 0
+#   first_even = start if start % 2 == 0 else start + 1
+#   if first_even > end:
+#     return 0
+#   # 끝값보다 높은값이 반복되지 않도록 유효성 검사를 하는 코드
+#   for i in range(first_even, end + 1, 2):
+#     # end + 1 : 범위의 끝값이 range로 설정할경우 직전값까지만 적용되므로 실제값을 적용하기 위해 마지막값인 end에 1을 더한다는 의미
+#     output += i
+#   return output
+#
+#
+# r1_opt = sum_all_optimized(5, 100)
+# print(r1_opt)
+
+# 함수 활용
+# 재귀 함수 : callback
+# 팩토리얼 ! :factorial() 의미는 3! => 1*2*3을 의미한다.
+# o! 은 1을 의미한다.
+
+# def factorial(n):
+#   if n < 0:
+#     return "틀렸음!!"
+#   elif n == 0:
+#     return 1
+#   # 곱셈의 행위를 1번 줄이고자 입력한코드 0값을 입력하면 실행하지 않고 바로 1로 전환하여 곱셈 실행
+#   else:
+#     output = 1
+#     for i in range(n, 0, -1):
+#       output *= i
+#     return output
+#
+#
+# r = factorial(-5)
+# print(r)
+
+# 재귀함수
+# def factorial(n):
+#   if n < 0:
+#     return "틀렸음!!"
+#   elif n == 0:
+#     return 1
+#
+#   else:
+#     return n * factorial(n - 1)
+#
+#
+# r = factorial(5)
+# print(r)
+
+# round(2.5)>2>3 2와 3중에 짝수는 2
+
+# import math
+# math.sqrt()
+# 
+# from math import sqrt
+# sqrt()
+# # from 모듈이름 import 가져오고 싶은것
+# import math as m
+# m.sin()
+
+ 
+import random
+
+
+
+# # import random
+# from random import random,randrange,choice
+#
+# print(random())
+# # 0.0 <= x < 1.0
+#
+# print(random.uniform(10, 20))
+# # uniform(min, max)
+#
+# print(randrange(10))
+# # 정수
+#
+# print(choice([1, 2, 3, 4, 5]))
+# # 리스트 내부의 데이터 중에서 아무거나 뽑아낸다
+#
+# print(random.shuffle([1, 2, 3, 4, 5]))
+# # 혼합한다. 출력은 안함
+#
+# print(random.sample([1,2,3,4,5], k=2))
+# # 전체 리스트 중에서 2개를 추출한다
+#
+#
+# import random
+#
+# a = random.random()
+# b = random.uniform(10, 20)
+# c = random.randrange(10)
+# d = random.choice([1, 2, 3, 4, 5])
+#
+# # 중복 제거: 같은 값이 있으면 다시 뽑기
+# while b == a:
+#   b = random.uniform(10, 20)
+#
+# while c == a or c == b:
+#   c = random.randrange(10)
+#
+# while d == a or d == b or d == c:
+#   d = random.choice([1, 2, 3, 4, 5])
+#
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+
+
+# import sys
+#
+# # system의 약자 - 공통용어
+# # exit()
+#
+# print(sys.getwindowsversion())
+# print(sys.copyright)
+# print(sys.version)
+# 시스템 버전 확인방법
+
+
+# import os
+#
+# print(os.name) os버전이름
+# print(os.getcwd()) 현재 선택되어져있는 폴더 또는 파일의 경로
+# print(os.listdir())
+
+
+
+# import os
+#
+# print(os.name)
+# print(os.getcwd())
+# print(os.listdir())
+#
+# # os.mkdir("test")
+# # os.rmdir("test")
+#
+# # with open("origin.txt", "w") as file:
+# #   file.write("Hello")
+#
+# # os.rename("origin.txt", "new.txt")
+# # os.remove("new.txt")
+# os.system("dir")
+
+
+# import datetime
+#
+# now = datetime.datetime.now()
+# print(now.strftime("%Y{} %m{} %d{} %H{} %M{} %S{}").format(*"년월일시분초"))
+#
+# one_year_later = now.replace(year=now.year + 1)
+# # now.year - 윤년이나 윤월이 걸려도 자동으로 계산해줌
+# print(one_year_later)
+
+# print(now.year)
+# print(now.month)
+# print(now.day)
+# print(now.hour)
+# print(now.minute)
+# print(now.second)
+#
+# output_a = now.strftime("%Y.%m.%d %H:%M:%S")
+# # str+format+time 시간을 문자열 형태로 표현한다
+# print(output_a)
+#
+# output_b = now.strftime("%Y{}%m{}%d{} %H{}%M{}%S{}").format(*"년월일시분초")
+# print(output_b)
+
+# 특정 시간 이후의 시간 구하기
+# 오늘 날짜를 기준으로 1년 뒤의 날짜는 몇일이냐?
+
+
+# import time
+#
+# print("지금부터 5초동안 정지")
+# time.sleep(5)
+# print("프로그램 종료")
+
+
+# from urllib import request
+#
+# target = request.urlopen("http://google.com")
+# output = target.read()
+#
+# print(output)
+
+# 웹스크롤링 웹스크래핑 웹크롤링
+
+# 
+# from operator import itemgetter
+# 
+# # json파일형식
+# books = [
+#   {
+#     "제목": "열심히 공부하자",
+#     "가격": 19000,
+#   },
+#   {
+#     "제목": "놀자",
+#     "가격": 18000,
+#   },
+#   {
+#     "제목": "쿨쿨",
+#     "가격": 38000,
+#   }
+# ]
+# 
+# print("가장 저렴한 책")
+# print(min(books, key=itemgetter("가격")))
+
+

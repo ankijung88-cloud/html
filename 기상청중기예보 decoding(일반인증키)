@@ -1,0 +1,117 @@
+기상청중기예보 decoding(일반인증키)
+6fca4f5b7fb9aa6aab7a94ae202be3b22d9bac29b301ee54b9ef96a7a3f144b3
+
+# import datetime
+# import json
+# import urllib.parse
+# import urllib.request
+#
+#
+# def get_kma_mid_term_forecast_api():
+#   service_key = 'SnIAmjknjSIk0caKte4SIAguIlxKcdcJSJ/cW/rIlSeUj9R8CRrWn/yDO73sji+kUREFuWz62MfP5ZkwC+9RdA=='  # 일반 인증키(Decoding)
+#   stn_id = '109'  # 서울 관측소 ID
+#
+#   now = datetime.datetime.now()
+#   tm_fc = now.strftime('%Y%m%d') + ('0600' if now.hour < 18 else '1800')
+#
+#   url = "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"
+#   other_params = {
+#     'pageNo': '1',
+#     'numOfRows': '10',
+#     'dataType': 'JSON',
+#     'stnId': stn_id,
+#     'tmFc': tm_fc
+#   }
+#
+#   encoded_key = urllib.parse.quote_plus(service_key)
+#   other_query_string = urllib.parse.urlencode(other_params)
+#   request_url = f"{url}?serviceKey={encoded_key}&{other_query_string}"
+#
+#   print(f"API 요청 URL: {request_url}\n")
+#
+#   response = urllib.request.urlopen(request_url)
+#   response_body = response.read().decode('utf-8')
+#
+#   # JSON 형식으로 변환하여 data 변수에 할당
+#   data = json.loads(response_body)  # JSON 형식으로 변환
+#
+#   # API 응답 전체 출력 (디버깅 용도)
+#   # print(json.dumps(data, indent=4, ensure_ascii=False))
+#
+#   if data['response']['header']['resultCode'] == '00':
+#     items = data['response']['body']['items']['item']
+#     forecast_item = items[0] if items else None
+#
+#     if forecast_item:
+#       print(f"--- 서울 지역 중기 예보 ({tm_fc[:8]} 발표) ---")
+#       print(f"발표시각: {tm_fc[:4]}년 {tm_fc[4:6]}월 {tm_fc[6:8]}일 {tm_fc[8:10]}시")
+#       print(f"\n중기 기상전망: {forecast_item['wfSv']}")
+#     else:
+#       print("날씨 예보 정보를 찾을 수 없습니다.")
+#   else:
+#     print(f"API 요청 실패: {data['response']['header']['resultCode']} - {data['response']['header']['resultMsg']}")
+#
+#
+# # 함수 실행
+# get_kma_mid_term_forecast_api()
+
+import datetime
+import json
+import urllib.parse
+import urllib.request
+
+
+
+def get_kma_mid_term_forecast_api():
+  service_key = '6fca4f5b7fb9aa6aab7a94ae202be3b22d9bac29b301ee54b9ef96a7a3f144b3'
+  stn_id = '109'
+
+  now = datetime.datetime.now()
+
+  tm_fc = now.strftime('%Y%m%d') + ('0600' if now.hour < 18 else '1800')
+  # 현재 시간이 18시 이전이면 오늘 오전 6시 발표를 사용
+  # 그 이후이면 오늘 오후 6시 발표를 사용
+  url = "https://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"
+
+  other_params = {
+    'pageNo' : '1',
+    'numOfRows' : '10',
+    'dataType' : 'JSON',
+    'stnId' : stn_id,
+    'tmFc' : tm_fc
+    }
+
+  encoded_key = urllib.parse.quote_plus(service_key)
+  # 암호가 해제된 서비스키를 다시 암호화 시키기 위해 encoded를 사용함
+  # 소포를 보내는 경우 - 주소 - & # - 금지된 기호를 사용할 수 없다
+  # %20 - 한 칸 띄어쓰기(공백)
+  # + - 는 인식이 안되어 %2B 이런식으로 하면 인식이 된다.
+  other_query_string= urllib.parse.urlencode(other_params)
+  # 온라인 검색창에서 단어사이에 칸을 띄운것을 붙여쓰기로 인식하게 하는것
+  request_url = f"{url}?serviceKey={encoded_key}&{other_query_string}"
+
+  print(f"API 요청 URL: {request_url}\n")
+
+  # request 작업이다
+  # response 작업을 시작한다
+
+  response = urllib.request.urlopen(request_url)
+
+  response_body = response.read().decode('utf-8')
+
+  data = json.loads(response_body)
+  # json형식으로 바꿔라
+  if data['response']['header']['resultCode'] == '00':
+    items = data['response']['body']['items']['item']
+    forecast_item = items[0] if items else None
+    # 예보 데이터가 성공적으로 추출되었다면 출력
+    if forecast_item:
+      print(f"--- 서울 지역 중기 예보 ({tm_fc[:8]} 발표) ---")
+      print(f"발표시각: {tm_fc[:4]}년 {tm_fc[4:6]}월 {tm_fc[6:8]}일 {tm_fc[8:10]}시")
+      print(f"\n중기 기상전망: {forecast_item['wfSv']}")
+    else:
+      print("날씨 예보 정보를 찾을 수 없습니다. (데이터가 비어있을 수 있어요)")
+  else:
+    print(f"API 요청 실패: {data['response']['header']['resultCode']} - {data['response']['header']['resultMsg']}")
+
+get_kma_mid_term_forecast_api()
